@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src/main/java"/>
+	<classpathentry kind="src" path="src/main/resources"/>
+	<classpathentry kind="src" path="src/test/java"/>
+	<classpathentry kind="src" path="src/test/resources"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
+	<classpathentry kind="lib" path="lib/cucumber-junit.jar"/>
+	<classpathentry kind="lib" path="lib/cucumber-java.jar"/>
+	<classpathentry kind="lib" path="lib/runtime/commons-logging-1.0.4.jar"/>
+	<classpathentry kind="lib" path="lib/runtime/cucumber-spring.jar"/>
+	<classpathentry kind="lib" path="lib/runtime/log4j-1.2.15.jar"/>
+	<classpathentry kind="lib" path="lib/runtime/org.springframework.asm-3.1.0.RC1.jar"/>
+	<classpathentry kind="lib" path="lib/runtime/org.springframework.beans-3.1.0.RC1.jar"/>
+	<classpathentry kind="lib" path="lib/runtime/org.springframework.context-3.1.0.RC1.jar"/>
+	<classpathentry kind="lib" path="lib/runtime/org.springframework.core-3.1.0.RC1.jar"/>
+	<classpathentry kind="lib" path="lib/runtime/org.springframework.expression-3.1.0.RC1.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
