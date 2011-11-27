@@ -1,22 +1,39 @@
 package com.zsoltfabok.blog;
 
+import static org.junit.Assert.assertEquals;
+
+import java.util.List;
+
 import cucumber.annotation.en.Given;
 import cucumber.annotation.en.Then;
 import cucumber.annotation.en.When;
 
 public class SimpleTextMungerStepsdef {
-	@Given("^I have an instance of my class$")
-	public void I_have_an_instance_of_my_class() {
-	    // Express the Regexp above with the code you wish you had
-	}
+    private SimpleTextMunger munger;
+    private String result;
 
-	@Then("^I receive \"([^\"]*)\"$")
-	public void I_receive_(String arg1) {
-	    // Express the Regexp above with the code you wish you had
-	}
+    @Given("^I have an instance of my class$")
+    public void I_have_an_instance_of_my_class() {
+        munger = new SimpleTextMunger();
+    }
 
-	@When("^I call my method with \"([^\"]*)\"$")
-	public void I_call_my_method_with_(String arg1) {
-	    // Express the Regexp above with the code you wish you had
-	}
+    @When("^I call my method with \"([^\"]*)\"$")
+    public void I_call_my_method_with_(String word) {
+        result = munger.execute(word);
+    }
+
+    @Then("^I receive \"([^\"]*)\"$")
+    public void I_receive_(String expectation) {
+        assertEquals(expectation, result);
+    }
+
+    @Given("^the following users$")
+    public void the_following_users(List<Entry> entries) {
+        // iterate through the list and do something
+    }
+
+    class Entry {
+        String first_name;
+        String last_name;
+    }
 }
