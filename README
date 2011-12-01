@@ -1,0 +1,7 @@
+This reposity contains the java code I created while I was writing my posts about cucumber-jvm.
+
+======
+
+The first post is about the basics of BDD, cucumber and how to set up an eclipse project for executing cucumber features for java. You can find more about it here:
+
+http://www.zsoltfabok.com/blog/2011/12/cucumber-jvm-preparation/
