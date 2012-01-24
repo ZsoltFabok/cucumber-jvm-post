@@ -4,17 +4,20 @@ import static org.junit.Assert.assertEquals;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import cucumber.annotation.en.Given;
 import cucumber.annotation.en.Then;
 import cucumber.annotation.en.When;
 
 public class SimpleTextMungerStepsdef {
+
+    @Autowired
     private SimpleTextMunger munger;
     private String result;
 
     @Given("^I have an instance of my class$")
     public void I_have_an_instance_of_my_class() {
-        munger = new SimpleTextMunger();
     }
 
     @When("^I call my method with \"([^\"]*)\"$")

@@ -1,21 +1,27 @@
 package com.zsoltfabok.blog;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+@Component
 public class SimpleTextMunger {
 
-    public String execute(String word) {
-        if (word.length() < 3) {
-            return word;
-        } else {
-            StringBuilder temp = new StringBuilder(word);
-            temp = temp.reverse();
-            return switchFirstAndLastCharacters(temp).toString();
-        }
+    private final SentenceHelper sentenceHelper;
+    private final Munger munger;
+
+    @Autowired
+    public SimpleTextMunger(SentenceHelper sentenceHelper, Munger munger) {
+        this.sentenceHelper = sentenceHelper;
+        this.munger = munger;
     }
 
-    private StringBuilder switchFirstAndLastCharacters(StringBuilder word) {
-        char lastCharacter = word.charAt(word.length() - 1);
-        word.setCharAt(word.length() - 1, word.charAt(0));
-        word.setCharAt(0, lastCharacter);
-        return word;
+    public String execute(String sentence) {
+        List<String> words = sentenceHelper.split(sentence);
+        for (int i = 0; i < words.size(); i++) {
+            words.set(i, munger.munge(words.get(i)));
+        }
+        return sentenceHelper.join(words);
     }
 }

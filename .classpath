@@ -16,5 +16,6 @@
 	<classpathentry kind="lib" path="lib/runtime/org.springframework.context-3.1.0.RC1.jar"/>
 	<classpathentry kind="lib" path="lib/runtime/org.springframework.core-3.1.0.RC1.jar"/>
 	<classpathentry kind="lib" path="lib/runtime/org.springframework.expression-3.1.0.RC1.jar"/>
+	<classpathentry kind="lib" path="lib/org.springframework.test-3.1.0.RC1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
