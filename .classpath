@@ -18,5 +18,11 @@
 	<classpathentry kind="lib" path="lib/runtime/org.springframework.expression-3.1.0.RC1.jar"/>
 	<classpathentry kind="lib" path="lib/org.springframework.test-3.1.0.RC1.jar"/>
 	<classpathentry kind="lib" path="lib/mockito-all-1.9.0.jar"/>
+	<classpathentry kind="lib" path="lib/org.springframework.web-3.1.0.RC1.jar"/>
+	<classpathentry kind="lib" path="lib/org.springframework.web.servlet-3.1.0.RC1.jar"/>
+	<classpathentry kind="lib" path="lib/selenium-java-2.25.0.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/blog.embedded.webservice"/>
+	<classpathentry kind="lib" path="lib/javax.servlet.jsp.jstl-api-1.2.1.jar"/>
+	<classpathentry kind="lib" path="lib/javax.servlet.jsp.jstl-1.2.1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
