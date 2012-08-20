@@ -6,6 +6,6 @@ import cucumber.junit.Cucumber;
 import cucumber.junit.Feature;
 
 @RunWith(Cucumber.class)
-@Feature(value = "Web_text_munger.feature")
+@Feature(value = "web_text_munger.feature")
 public class WebTextMunger_Test {
 }

@@ -6,29 +6,37 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
+import cucumber.annotation.Before;
 import cucumber.annotation.en.Given;
 import cucumber.annotation.en.Then;
 import cucumber.annotation.en.When;
 
 public class WebTextMungerStepsdef {
 
-    private EmbeddedTomcat tomcat = new EmbeddedTomcat();
-    private WebDriver browser;
+    private static EmbeddedTomcat tomcat = new EmbeddedTomcat();
+    private static WebDriver browser;
 
-    @Given("^I am using Firefox browser for testing$")
-    public void I_am_using_Firefox_browser_for_testing() {
-        browser = new FirefoxDriver();
+    @Before("@web")
+    public void beforeScenario() {
+        if (!tomcat.isRunning()) {
+            tomcat.start();
+            tomcat.deploy("munger");
+            browser = new FirefoxDriver();
+
+            Runtime.getRuntime().addShutdownHook(new Thread() {
+                public void run() {
+                    browser.close();
+                    tomcat.stop();
+                }
+            });
+        }
     }
 
-    @Given("^the application is deployed$")
-    public void the_application_is_deployed() {
-        tomcat.deploy("munger");
-    }
-
-    @Given("^the embedded tomcat is running$")
-    public void the_embedded_tomcat_is_running() {
-        tomcat.start();
-    }
+//    @After("@web")
+//    public void afterScenario() {
+//        browser.close();
+//        tomcat.stop();
+//    }
 
     @Given("^I am on the home page")
     public void I_am_on_the_home_page() {
@@ -53,10 +61,5 @@ public class WebTextMungerStepsdef {
     @Then("^I see \"([^\"]*)\" as the original$")
     public void I_see_as_the_original(String text) {
         assertEquals("(" + text + ")", browser.findElement(By.id("original")).getText());
-    }
-
-    @Then("I close the browser")
-    public void I_close_the_browser() {
-        browser.close();
     }
 }

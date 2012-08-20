@@ -3,3 +3,5 @@ bin
 *.class
 .settings
 target
+work
+tomcat.8080
