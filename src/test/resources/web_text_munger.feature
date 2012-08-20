@@ -3,7 +3,7 @@ Feature: web text munger kata
   Scenario: It should process a sentence
     Given the embedded tomcat is running
       And the application is deployed
-      And I am using Firefox for testing
+      And I am using Firefox browser for testing
       And I am on the home page
      When I enter the "flow flow"
       And I press "submit"

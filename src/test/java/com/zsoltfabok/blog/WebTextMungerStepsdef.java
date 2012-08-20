@@ -16,7 +16,7 @@ public class WebTextMungerStepsdef {
     private WebDriver browser;
 
     @Given("^I am using Firefox browser for testing$")
-    public void I_am_using_Firefox_for_testing() {
+    public void I_am_using_Firefox_browser_for_testing() {
         browser = new FirefoxDriver();
     }
 
