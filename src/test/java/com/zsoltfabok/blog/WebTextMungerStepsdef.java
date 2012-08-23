@@ -35,7 +35,7 @@ public class WebTextMungerStepsdef {
         browser.get(tomcat.getApplicationUrl("munger"));
     }
 
-    @When("^I enter the \"([^\"]*)\"$")
+    @When("^I enter \"([^\"]*)\"$")
     public void I_enter_(String text) {
         browser.findElement(By.id("text")).sendKeys(text);
     }
@@ -45,8 +45,8 @@ public class WebTextMungerStepsdef {
         browser.findElement(By.id(buttonId)).click();
     }
 
-    @Then("^I see \"([^\"]*)\" as munged text$")
-    public void I_see_as_munged_text(String text) {
+    @Then("^I see \"([^\"]*)\" as the munged text$")
+    public void I_see_as_the_munged_text(String text) {
         assertEquals(text, browser.findElement(By.id("munged")).getText());
     }
 
