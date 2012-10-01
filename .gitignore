@@ -2,3 +2,6 @@ lib
 bin
 *.class
 .settings
+TEST-*
+build.properties
+target
