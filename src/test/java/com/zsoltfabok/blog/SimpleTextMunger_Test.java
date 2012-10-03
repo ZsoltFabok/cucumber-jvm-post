@@ -6,5 +6,5 @@ import cucumber.junit.Cucumber;
 
 @RunWith(Cucumber.class)
 @Cucumber.Options(features="classpath:simple_text_munger.feature")
-public class SimpleTextMungerFeature {
+public class SimpleTextMunger_Test {
 }
