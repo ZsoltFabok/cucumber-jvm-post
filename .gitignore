@@ -3,5 +3,6 @@ bin
 *.class
 .settings
 TEST-*
+TESTS-*
 build.properties
 target

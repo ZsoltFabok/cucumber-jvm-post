@@ -57,7 +57,7 @@
       <formatter type="xml"/>
       <batchtest todir="${junit-report}/xml">
         <fileset dir="${test-classes}">
-          <include name="**/*Feature.class"/>
+          <include name="**/*_Test.class"/>
         </fileset>
       </batchtest>
     </junit>
