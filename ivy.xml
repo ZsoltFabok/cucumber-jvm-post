@@ -14,5 +14,40 @@
         <dependency org="info.cukes" name="cucumber-spring" rev="1.0.14"/>
         <dependency org="org.springframework" name="spring-test" rev="3.1.2.RELEASE"/>
         <dependency org="org.mockito" name="mockito-core" rev="1.9.5-rc1"/>
+
+        <dependency org="org.springframework" name="spring-web" rev="3.1.2.RELEASE"/>
+        <dependency org="commons-io" name="commons-io" rev="2.1"/>
+        <dependency org="org.seleniumhq.selenium" name="selenium-java" rev="2.25.0"/>
+
+        <!--
+          instead of making the life harder and create dependencies between this project
+          and the blog.embedded.webservice, I just copied the dependencies and some files
+          from there and use here.
+
+          Trust me, I'm an engineer.
+        -->
+        <dependency org="org.apache.tomcat.embed" name="tomcat-embed-core" rev="7.0.28"/>
+        <dependency org="org.apache.tomcat.embed" name="tomcat-embed-jasper" rev="7.0.28"/>
+        <dependency org="org.apache.tomcat.embed" name="tomcat-embed-logging-juli" rev="7.0.28"/>
+        <dependency org="org.apache.tomcat" name="tomcat-jsp-api" rev="7.0.28" />
+
+        <!--
+          Tomcat 7.x does not play nice and doesn't work with the 2.5.x version of javax.servlet
+          and with the matching javax.servlet.jsp modules. It seems that it has its own implementation
+          so in order to make this work I have to use that implementation and ignore the others.
+          It is funny that the jstl remained untouched.
+        -->
+        <dependency org="javax.servlet.jsp.jstl" name="javax.servlet.jsp.jstl-api" rev="1.2.1" />
+        <exclude org="javax.servlet" />
+        <exclude org="javax.servlet.jsp" />
+        <exclude org="javax.el" />
+
+        <!--
+          spring-web depends on com.caucho but it is no longer available:
+            https://jira.springsource.org/browse/SPR-9854
+          plus the internal exclude does not work hence the global:
+            http://stackoverflow.com/questions/6364306/how-to-exclude-commons-logging-dependency-of-spring-with-ivy
+        -->
+        <exclude org="com.caucho"/>
     </dependencies>
 </ivy-module>
