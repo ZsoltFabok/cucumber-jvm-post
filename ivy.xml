@@ -11,5 +11,7 @@
         <dependency org="junit" name="junit" rev="4.10"/>
         <dependency org="info.cukes" name="cucumber-java" rev="1.0.14"/>
         <dependency org="info.cukes" name="cucumber-junit" rev="1.0.14"/>
+        <dependency org="info.cukes" name="cucumber-spring" rev="1.0.14"/>
+        <dependency org="org.springframework" name="spring-test" rev="3.1.2.RELEASE"/>
     </dependencies>
 </ivy-module>

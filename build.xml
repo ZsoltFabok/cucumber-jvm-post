@@ -24,6 +24,10 @@
           <src path="${src}"/>
           <classpath refid="ivy.compile.path"/>
       </javac>
+      <copy todir="${classes}">
+        <fileset dir="${resources}" includes="**/*.xml"/>
+        <fileset dir="${resources}" includes="**/*.properties"/>
+      </copy>
   </target>
 
   <target name="test" depends="compile">
@@ -40,6 +44,7 @@
     </javac>
     <copy todir="${test-classes}">
       <fileset dir="${test-resources}" includes="**/*.feature"/>
+      <fileset dir="${test-resources}" includes="**/*.xml"/>
     </copy>
 
     <delete includeemptydirs="true" failonerror="false">
@@ -48,7 +53,7 @@
     <mkdir dir="${junit-report}/xml"/>
     <mkdir dir="${junit-report}/html"/>
 
-    <junit printsummary="yes" fork="yes" haltonfailure="yes">
+    <junit printsummary="yes" fork="yes" haltonfailure="no">
       <classpath>
         <path refid="ivy.test.path"/>
         <pathelement location="${classes}"/>
@@ -57,13 +62,17 @@
       <formatter type="xml"/>
       <batchtest todir="${junit-report}/xml">
         <fileset dir="${test-classes}">
+          <!-- features -->
           <include name="**/*_Test.class"/>
+          <!-- other tests like the spring example -->
+          <include name="**/*Test.class"/>
         </fileset>
       </batchtest>
     </junit>
     <junitreport>
       <fileset dir="${junit-report}/xml">
         <include name="TEST-*.xml"/>
+        <include name="TESTS-*.xml"/>
       </fileset>
       <report format="frames" todir="${junit-report}/html"/>
     </junitreport>
