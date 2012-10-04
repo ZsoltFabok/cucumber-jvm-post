@@ -1,0 +1,18 @@
+<ivy-module version="2.0">
+    <info organisation="com.zsoltfabok" module="blog.cucumberjvm"/>
+    <configurations>
+        <conf name="compile" description="compiling" />
+        <conf name="test" extends="compile" description="testing" />
+    </configurations>
+    <publications>
+        <artifact name="blog.cucumberjvm" type="jar" ext="jar" />
+    </publications>
+    <dependencies>
+        <dependency org="junit" name="junit" rev="4.10"/>
+        <dependency org="info.cukes" name="cucumber-java" rev="1.0.14"/>
+        <dependency org="info.cukes" name="cucumber-junit" rev="1.0.14"/>
+        <dependency org="info.cukes" name="cucumber-spring" rev="1.0.14"/>
+        <dependency org="org.springframework" name="spring-test" rev="3.1.2.RELEASE"/>
+        <dependency org="org.mockito" name="mockito-core" rev="1.9.5-rc1"/>
+    </dependencies>
+</ivy-module>

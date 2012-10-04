@@ -1,0 +1,80 @@
+<project xmlns:ivy="antlib:org.apache.ivy.ant" name="cucumber-jvm-post" default="test">
+  <loadproperties srcFile="build.properties"/>
+  <!-- define the ivy.jar location in the build.properties -->
+  <taskdef resource="org/apache/ivy/ant/antlib.xml" uri="antlib:org.apache.ivy.ant" classpath="${ivy.jar}" />
+
+  <property name="src" value="src/main/java"/>
+  <property name="test-src" value="src/test/java"/>
+  <property name="classes" value="target/classes"/>
+  <property name="test-classes" value="target/test-classes"/>
+  <property name="resources" value="src/main/resources"/>
+  <property name="test-resources" value="src/test/resources"/>
+  <property name="target" value="target"/>
+
+  <target name="clean">
+    <delete includeemptydirs="true">
+      <fileset dir="${target}" includes="**/*"/>
+    </delete>
+  </target>
+
+  <target name="compile">
+      <ivy:cachepath pathid="ivy.compile.path" conf="compile" />
+      <mkdir dir="${classes}"/>
+      <javac destdir="${classes}" debug="true" failonerror="true" includeAntRuntime="false">
+          <src path="${src}"/>
+          <classpath refid="ivy.compile.path"/>
+      </javac>
+      <copy todir="${classes}">
+        <fileset dir="${resources}" includes="**/*.xml"/>
+        <fileset dir="${resources}" includes="**/*.properties"/>
+      </copy>
+  </target>
+
+  <target name="test" depends="compile">
+    <property name="junit-report" value="${target}/reports/junit"/>
+
+    <ivy:cachepath pathid="ivy.test.path" />
+    <mkdir dir="${test-classes}"/>
+    <javac destdir="${test-classes}" debug="true" failonerror="true" includeAntRuntime="false">
+        <src path="${test-src}"/>
+        <classpath>
+          <pathelement location="${classes}"/>
+          <path refid="ivy.test.path"/>
+        </classpath>
+    </javac>
+    <copy todir="${test-classes}">
+      <fileset dir="${test-resources}" includes="**/*.feature"/>
+      <fileset dir="${test-resources}" includes="**/*.xml"/>
+    </copy>
+
+    <delete includeemptydirs="true" failonerror="false">
+       <fileset dir="${junit-report}" includes="**/*"/>
+    </delete>
+    <mkdir dir="${junit-report}/xml"/>
+    <mkdir dir="${junit-report}/html"/>
+
+    <junit printsummary="yes" fork="yes" haltonfailure="no">
+      <classpath>
+        <path refid="ivy.test.path"/>
+        <pathelement location="${classes}"/>
+        <pathelement location="${test-classes}"/>
+      </classpath>
+      <formatter type="xml"/>
+      <batchtest todir="${junit-report}/xml">
+        <fileset dir="${test-classes}">
+          <!-- features -->
+          <include name="**/*_Test.class"/>
+          <!-- other tests like the spring example -->
+          <include name="**/*Test.class"/>
+        </fileset>
+      </batchtest>
+    </junit>
+    <junitreport>
+      <fileset dir="${junit-report}/xml">
+        <include name="TEST-*.xml"/>
+        <include name="TESTS-*.xml"/>
+      </fileset>
+      <report format="frames" todir="${junit-report}/html"/>
+    </junitreport>
+  </target>
+</project>

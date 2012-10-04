@@ -1,10 +1,9 @@
 package com.zsoltfabok.blog;
 
-import cucumber.junit.Cucumber;
-import cucumber.junit.Feature;
 import org.junit.runner.RunWith;
+import cucumber.junit.Cucumber;
 
 @RunWith(Cucumber.class)
-@Feature(value = "simple_text_munger.feature")
+@Cucumber.Options(features="classpath:simple_text_munger.feature")
 public class SimpleTextMunger_Test {
 }
