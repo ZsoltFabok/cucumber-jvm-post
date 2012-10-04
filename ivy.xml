@@ -13,5 +13,6 @@
         <dependency org="info.cukes" name="cucumber-junit" rev="1.0.14"/>
         <dependency org="info.cukes" name="cucumber-spring" rev="1.0.14"/>
         <dependency org="org.springframework" name="spring-test" rev="3.1.2.RELEASE"/>
+        <dependency org="org.mockito" name="mockito-core" rev="1.9.5-rc1"/>
     </dependencies>
 </ivy-module>
