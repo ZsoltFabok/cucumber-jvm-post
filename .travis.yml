@@ -1,0 +1,6 @@
+language: java
+script: ant clean test
+# whitelist
+branches:
+  only:
+    - master
